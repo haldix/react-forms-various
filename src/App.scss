@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+$color-dark: hsl(240, 47%, 20%);
+$color-light: rgb(161, 209, 227);
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: $color-dark;
+  background-color: $color-light;
+}
+
+// Elements
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  @include flex-center;
+  flex-direction: column;
+}
+
+/* NavBar */
+.is-active {
+  text-decoration: underline;
+}
+
+.navbar {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: $color-dark;
+  height: 2.5rem;
+
+  & .logo {
+    font-family: 'Courgette', cursive;
+    text-transform: capitalize;
+    margin-right: 10%;
+    color: rgb(255, 149, 130);
+    font-size: 1.5rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.navbar a {
+  color: $color-light;
+  transition: all 0.3s ease-in;
+}
+
+.navbar a:hover {
+  color: #fff;
+}
+
+// FormDoc
+.form-main {
+  font-weight: 700;
+  width: 500px;
+  background-color: #f6f6f6;
+  border: 1px solid #ccc;
+  padding: 1.2rem;
+  border-radius: 0.4rem;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+
+  &__btn {
+    border: none;
+    border-radius: 0.2em;
+    padding: 0.3em 0.7em;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #f00;
+    margin-top: 1rem;
+    transition: all 0.3s ease-in;
+  }
+
+  &__btn:hover {
+    background-color: #c33;
+  }
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  width: 100%;
+  background-color: rgb(209, 229, 236);
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  padding: 0.3em;
+  border: 2px solid $color-dark;
+  border-radius: 0.3em;
+  outline: none;
+}
+
+input[type='text']:focus,
+input[type='number']:focus,
+textarea:focus {
+  border-width: 2.5px;
+  box-shadow: 0 3px 5px;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  margin: 0 0.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+fieldset {
+  min-width: 0;
+  border: 1px solid rgb(174, 174, 174);
+  margin-bottom: 1rem;
+}
+
+legend {
+  margin-bottom: 0.5rem;
+}
+
+/* ClientList */
+.ClientList.container {
+  display: flex;
+  flex-direction: column;
+}
+
+// Client
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.edit-btns-cont {
+  display: flex;
+  justify-content: space-around;
+}
