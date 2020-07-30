@@ -48,39 +48,6 @@ body {
   flex-direction: column;
 }
 
-/* NavBar */
-.is-active {
-  text-decoration: underline;
-}
-
-.navbar {
-  font-weight: bold;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: $color-dark;
-  height: 2.5rem;
-
-  & .logo {
-    font-family: 'Courgette', cursive;
-    text-transform: capitalize;
-    margin-right: 10%;
-    color: rgb(255, 149, 130);
-    font-size: 1.5rem;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  }
-}
-
-.navbar a {
-  color: $color-light;
-  transition: all 0.3s ease-in;
-}
-
-.navbar a:hover {
-  color: #fff;
-}
-
 // FormDoc
 .form-main {
   font-weight: 700;
@@ -181,4 +148,80 @@ tr:nth-child(even) {
 .edit-btns-cont {
   display: flex;
   justify-content: space-around;
+}
+
+.client__btn-del,
+.client__btn-edit {
+  border: none;
+  padding: 0.3em;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.client__btn-del:hover,
+.client__btn-edit:hover {
+  background-color: #aaa;
+}
+
+/* Modal */
+
+.modal-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  border-radius: 0.3rem;
+  min-width: 30vw;
+  max-width: 60vw;
+  max-height: 70vh;
+  position: relative;
+  padding: 3.5em 1.5em 1.5em 1.5em;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+@media (max-width: 700px) {
+  .modal-content {
+    max-width: 95vw;
+    max-height: 90vh;
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.4em;
+  background: #f6f6f7;
+  border: 0;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+.modal-close-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: transparent;
+  stroke: black;
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+/* scroll-lock added to html element by JS */
+.scroll-lock {
+  overflow: hidden;
+  margin-right: 17px;
 }

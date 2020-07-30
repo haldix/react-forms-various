@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Client from './Client';
+import { ClientContext } from './ClientContext';
+import Modal from './Modal';
 
-const ClientList = ({ clients }) => {
+const ClientList = () => {
+  const { clients, isEditing } = useContext(ClientContext);
+
   return (
     <div className='container ClientList'>
       <h2>Client Information</h2>
@@ -18,11 +22,11 @@ const ClientList = ({ clients }) => {
           </tr>
         </thead>
         <tbody>
-          {clients.map((client, i) => (
-            <Client key={i} client={client} />
-          ))}
+          {clients &&
+            clients.map((client, i) => <Client key={i} client={client} />)}
         </tbody>
       </table>
+      {isEditing && <Modal />}
     </div>
   );
 };

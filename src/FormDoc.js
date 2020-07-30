@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ClientContext } from './ClientContext';
 
-const FormDoc = ({ handleData }) => {
+const FormDoc = () => {
   const initVal = {
     firstName: '',
     lastName: '',
@@ -11,9 +12,11 @@ const FormDoc = ({ handleData }) => {
     pool: false,
     payment: 'Lifetime',
     comments: '',
+    id: '',
   };
 
   const [data, setData] = useState(initVal);
+  const { addClient } = useContext(ClientContext);
 
   const handleChange = (e) => {
     let val;
@@ -26,8 +29,7 @@ const FormDoc = ({ handleData }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Data Saved');
-    handleData(data);
+    addClient(data);
     setData(initVal);
     alert('Client Data Saved');
   };
