@@ -1,16 +1,6 @@
-import React, { useContext } from 'react';
-import { ClientContext } from './ClientContext';
-import { ModalContext } from './ModalContext';
+import React from 'react';
 
-const Client = ({ client }) => {
-  const { delClient, editClient } = useContext(ClientContext);
-  const { openModal } = useContext(ModalContext);
-
-  const modalEdit = (id, modalContent) => {
-    editClient(id);
-    openModal(modalContent);
-  };
-
+const Client = ({ client, delClient, editClient }) => {
   const {
     firstName,
     lastName,
@@ -23,6 +13,7 @@ const Client = ({ client }) => {
     comments,
     id,
   } = client;
+
   return (
     <tr>
       <td>
@@ -40,10 +31,7 @@ const Client = ({ client }) => {
           <button className='client__btn-del' onClick={() => delClient(id)}>
             <i className='far fa-trash-alt'></i>
           </button>
-          <button
-            className='client__btn-edit'
-            onClick={() => modalEdit(id, 'two')}
-          >
+          <button className='client__btn-edit' onClick={() => editClient(id)}>
             <i className='far fa-edit'></i>
           </button>
         </div>

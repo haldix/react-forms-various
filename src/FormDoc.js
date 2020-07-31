@@ -1,38 +1,26 @@
-import React, { useState, useContext } from 'react';
-import { ClientContext } from './ClientContext';
+import React from 'react';
+import useForm from './useForm';
 
-const FormDoc = () => {
-  const initVal = {
-    firstName: '',
-    lastName: '',
-    age: '',
-    gender: 'male',
-    dining: false,
-    fitness: false,
-    pool: false,
-    payment: 'Lifetime',
-    comments: '',
-    id: '',
-  };
+const initVal = {
+  firstName: '',
+  lastName: '',
+  age: '',
+  gender: 'male',
+  dining: false,
+  fitness: false,
+  pool: false,
+  payment: 'Lifetime',
+  comments: '',
+  id: '',
+};
 
-  const [data, setData] = useState(initVal);
-  const { addClient } = useContext(ClientContext);
+const FormDoc = ({ clients, addClient }) => {
+  const [data, handleChange, handleSubmit] = useForm(submit, initVal);
 
-  const handleChange = (e) => {
-    let val;
-    e.target.type === 'checkbox'
-      ? (val = e.target.checked)
-      : (val = e.target.value);
-
-    setData({ ...data, [e.target.name]: val });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  function submit() {
     addClient(data);
-    setData(initVal);
     alert('Client Data Saved');
-  };
+  }
 
   return (
     <div className='container'>
