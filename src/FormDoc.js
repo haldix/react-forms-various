@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-//import useForm from './useForm';
 
 const initVal = {
   firstName: '',
@@ -19,6 +18,7 @@ const FormDoc = ({ clients, addClient, clientToEdit }) => {
 
   useEffect(() => {
     setData(clientToEdit);
+    console.log('useEffect');
   }, [clientToEdit]);
 
   const handleChange = (e) => {
@@ -33,7 +33,6 @@ const FormDoc = ({ clients, addClient, clientToEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addClient(data);
-    alert('Client Data Saved');
     setData(initVal);
   };
 

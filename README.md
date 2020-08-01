@@ -1,6 +1,6 @@
 Main purpose of this app is to use all form input types in the FormDoc component.
 
----
+## TODO: should not need to setData after submitting new data in FormDoc to reset form. This should be handled by setClientToEdit in App.js and UseEffect in FormDoc. Form does not reset to blank after adding new client despite prop clientToEdit changing.
 
 REACT BOILERPLATE:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

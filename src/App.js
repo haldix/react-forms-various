@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import './App.scss';
 import FormDoc from './FormDoc';
@@ -17,10 +17,16 @@ const initVal = {
   id: '',
 };
 
+const clientsVal = JSON.parse(localStorage.getItem('clients')) || [];
+
 function App() {
   const [clientToEdit, setClientToEdit] = useState(initVal);
-  const [clients, setClients] = useState([]);
+  const [clients, setClients] = useState(clientsVal);
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('clients', JSON.stringify(clients));
+  }, [clients]);
 
   function addClient(data) {
     if (isEditing) {
@@ -30,6 +36,9 @@ function App() {
     } else {
       setClients([...clients, { ...data, id: uuid() }]);
     }
+    setClientToEdit(initVal);
+    alert('Client Data Saved');
+    console.log('addClient STE');
   }
 
   function delClient(id) {
