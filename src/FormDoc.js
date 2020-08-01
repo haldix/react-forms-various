@@ -1,5 +1,5 @@
-import React from 'react';
-import useForm from './useForm';
+import React, { useState, useEffect } from 'react';
+//import useForm from './useForm';
 
 const initVal = {
   firstName: '',
@@ -14,13 +14,28 @@ const initVal = {
   id: '',
 };
 
-const FormDoc = ({ clients, addClient }) => {
-  const [data, handleChange, handleSubmit] = useForm(submit, initVal);
+const FormDoc = ({ clients, addClient, clientToEdit }) => {
+  const [data, setData] = useState(clientToEdit);
 
-  function submit() {
+  useEffect(() => {
+    setData(clientToEdit);
+  }, [clientToEdit]);
+
+  const handleChange = (e) => {
+    let val;
+    e.target.type === 'checkbox'
+      ? (val = e.target.checked)
+      : (val = e.target.value);
+
+    setData({ ...data, [e.target.name]: val });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     addClient(data);
     alert('Client Data Saved');
-  }
+    setData(initVal);
+  };
 
   return (
     <div className='container'>
