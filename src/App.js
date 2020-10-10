@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import './App.scss';
 import FormDoc from './FormDoc';
 import ClientList from './ClientList';
+import NavBar from './NavBar';
 
 const initVal = {
   firstName: '',
@@ -53,16 +55,24 @@ function App() {
 
   return (
     <div className='App'>
-      <FormDoc
-        clients={clients}
-        addClient={addClient}
-        clientToEdit={clientToEdit}
-      />
-      <ClientList
-        clients={clients}
-        delClient={delClient}
-        editClient={editClient}
-      />
+      <NavBar />
+      <Switch>
+        <Route exact path='/'>
+          <FormDoc
+            clients={clients}
+            addClient={addClient}
+            clientToEdit={clientToEdit}
+          />
+        </Route>
+        <Route exact path='/clients'>
+          <ClientList
+            clients={clients}
+            setClients={setClients}
+            delClient={delClient}
+            editClient={editClient}
+          />
+        </Route>
+      </Switch>
     </div>
   );
 }

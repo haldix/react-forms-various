@@ -198,7 +198,7 @@ const FormDoc = ({ clients, addClient, clientToEdit }) => {
           />
         </div>
         <div className='input-group'>
-          <button className='form-main__btn' type='submit'>
+          <button className='btn-alert form-main__btn' type='submit'>
             Save
           </button>
         </div>

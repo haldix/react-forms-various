@@ -1,7 +1,13 @@
 import React from 'react';
 import Client from './Client';
 
-const ClientList = ({ clients, delClient, editClient }) => {
+const ClientList = ({ clients, setClients, delClient, editClient }) => {
+  const clearAll = () => {
+    // eslint-disable-next-line
+    let cnfrm = confirm('Delete all data for all clients?');
+    if (!cnfrm) return;
+    setClients([]);
+  };
   return (
     <div className='container ClientList'>
       <h2>Client Information</h2>
@@ -29,6 +35,11 @@ const ClientList = ({ clients, delClient, editClient }) => {
             ))}
         </tbody>
       </table>
+      <div className='ClientList__btn-cont'>
+        <button className='btn-alert ClientList__btn-clear' onClick={clearAll}>
+          Clear All
+        </button>
+      </div>
     </div>
   );
 };
