@@ -1,7 +1,16 @@
 import React from 'react';
 import Client from './Client';
+import Form from './Form';
 
-const ClientList = ({ clients, setClients, delClient, editClient }) => {
+const ClientList = ({
+  clients,
+  setClients,
+  addClient,
+  delClient,
+  editClient,
+  isEditing,
+  clientToEdit,
+}) => {
   const clearAll = () => {
     // eslint-disable-next-line
     let cnfrm = confirm('Delete all data for all clients?');
@@ -35,11 +44,18 @@ const ClientList = ({ clients, setClients, delClient, editClient }) => {
             ))}
         </tbody>
       </table>
-      <div className='ClientList__btn-cont'>
-        <button className='btn-alert ClientList__btn-clear' onClick={clearAll}>
-          Clear All
-        </button>
-      </div>
+      {clients.length !== 0 && (
+        <div className='ClientList__btn-cont'>
+          <button
+            className='btn-alert ClientList__btn-clear'
+            onClick={clearAll}
+          >
+            Clear All
+          </button>
+        </div>
+      )}
+
+      {isEditing && <Form addClient={addClient} initVal={clientToEdit} />}
     </div>
   );
 };

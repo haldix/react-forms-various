@@ -40,7 +40,6 @@ function App() {
     }
     setClientToEdit(initVal);
     alert('Client Data Saved');
-    console.log('addClient STE');
   }
 
   function delClient(id) {
@@ -58,18 +57,17 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path='/'>
-          <FormDoc
-            clients={clients}
-            addClient={addClient}
-            clientToEdit={clientToEdit}
-          />
+          <FormDoc clients={clients} addClient={addClient} initVal={initVal} />
         </Route>
         <Route exact path='/clients'>
           <ClientList
             clients={clients}
             setClients={setClients}
+            addClient={addClient}
             delClient={delClient}
             editClient={editClient}
+            isEditing={isEditing}
+            clientToEdit={clientToEdit}
           />
         </Route>
       </Switch>
