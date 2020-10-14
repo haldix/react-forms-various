@@ -1,22 +1,9 @@
 import React from 'react';
 import Client from './Client';
-import Form from './Form';
 
-const ClientList = ({
-  clients,
-  setClients,
-  addClient,
-  delClient,
-  editClient,
-  isEditing,
-  clientToEdit,
-}) => {
-  const clearAll = () => {
-    // eslint-disable-next-line
-    let cnfrm = confirm('Delete all data for all clients?');
-    if (!cnfrm) return;
-    setClients([]);
-  };
+const ClientList = (props) => {
+  const { clients, confirmDelClient, editClient, confirmClearAll } = props;
+
   return (
     <div className='container ClientList'>
       <h2>Client Information</h2>
@@ -38,7 +25,7 @@ const ClientList = ({
               <Client
                 key={i}
                 client={client}
-                delClient={delClient}
+                confirmDelClient={confirmDelClient}
                 editClient={editClient}
               />
             ))}
@@ -48,14 +35,12 @@ const ClientList = ({
         <div className='ClientList__btn-cont'>
           <button
             className='btn-alert ClientList__btn-clear'
-            onClick={clearAll}
+            onClick={() => confirmClearAll()}
           >
             Clear All
           </button>
         </div>
       )}
-
-      {isEditing && <Form addClient={addClient} initVal={clientToEdit} />}
     </div>
   );
 };

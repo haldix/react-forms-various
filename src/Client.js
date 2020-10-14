@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Client = ({ client, delClient, editClient }) => {
+const Client = ({ client, confirmDelClient, editClient }) => {
   const {
     firstName,
     lastName,
@@ -28,11 +28,14 @@ const Client = ({ client, delClient, editClient }) => {
       <td>{comments}</td>
       <td>
         <div className='edit-btns-cont'>
-          <button className='client__btn-del' onClick={() => delClient(id)}>
-            <i className='far fa-trash-alt'></i>
-          </button>
           <button className='client__btn-edit' onClick={() => editClient(id)}>
             <i className='far fa-edit'></i>
+          </button>
+          <button
+            className='client__btn-del'
+            onClick={() => confirmDelClient(id)}
+          >
+            <i className='far fa-trash-alt'></i>
           </button>
         </div>
       </td>
