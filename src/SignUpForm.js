@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './Form';
 
-const FormDoc = ({ clients, addClient, initVal }) => {
+const SignUpForm = ({ clients, addClient, initVal }) => {
   return (
     <div className='container'>
       <h2>Sign Up Today!</h2>
@@ -10,4 +10,4 @@ const FormDoc = ({ clients, addClient, initVal }) => {
   );
 };
 
-export default FormDoc;
+export default SignUpForm;

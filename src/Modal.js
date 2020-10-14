@@ -29,7 +29,7 @@ const Modal = () => {
               onClick={onClickOutside}
               onKeyDown={onKeyDown}
             >
-              <div className='modal-content'>
+              <div className='modal'>
                 <button
                   ref={closeBtnRef}
                   className='modal-close-btn'
@@ -42,7 +42,6 @@ const Modal = () => {
                   </svg>
                 </button>
                 <ModalContent content={content} />
-                {/* <p>{content}</p> */}
               </div>
             </aside>
           </FocusTrap>,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import FormDoc from './FormDoc';
+import SignUpForm from './SignUpForm';
 import ClientList from './ClientList';
 import { ModalContext } from './ModalContext';
 import Form from './Form';
@@ -40,6 +40,7 @@ const ManageClients = () => {
     } else {
       setClients([...clients, { ...data, id: uuid() }]);
     }
+    openModal(<p>Your information has been saved.</p>);
   }
 
   function editClient(id) {
@@ -58,7 +59,9 @@ const ManageClients = () => {
     openModal(
       <>
         <p>Confirm delete Client?</p>{' '}
-        <button onClick={() => delClient(id)}>Delete</button>
+        <button className='btn-alert' onClick={() => delClient(id)}>
+          Delete
+        </button>
       </>
     );
   }
@@ -72,7 +75,9 @@ const ManageClients = () => {
     openModal(
       <>
         <p>Confirm delete all clients?</p>{' '}
-        <button onClick={() => clearAll()}>Delete All</button>
+        <button className='btn-alert' onClick={() => clearAll()}>
+          Delete All
+        </button>
       </>
     );
   }
@@ -86,18 +91,18 @@ const ManageClients = () => {
     <div>
       <Switch>
         <Route exact path='/'>
-          <FormDoc clients={clients} addClient={addClient} initVal={initVal} />
+          <SignUpForm
+            clients={clients}
+            addClient={addClient}
+            initVal={initVal}
+          />
         </Route>
         <Route exact path='/clients'>
           <ClientList
             clients={clients}
-            setClients={setClients}
-            addClient={addClient}
             confirmDelClient={confirmDelClient}
             confirmClearAll={confirmClearAll}
             editClient={editClient}
-            isEditing={isEditing}
-            clientToEdit={clientToEdit}
           />
         </Route>
       </Switch>
